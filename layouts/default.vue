@@ -1,7 +1,8 @@
 <template>
   <v-app>
     <!-- Header -->
-    <Header :drawer="drawer" @click.native="drawer = !drawer" />
+    <!-- <Header :drawer="drawer" @click.native="drawer = !drawer" /> -->
+    <Header :drawer.sync="drawer" />
 
     <v-main>
       <v-container>
