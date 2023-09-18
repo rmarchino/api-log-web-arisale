@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar dark fixed app color="grey lighten-1">
-    <v-app-bar-nav-icon @click="toggleDrawer" />
+  <v-app-bar app color="grey lighten-5">
+    <v-app-bar-nav-icon @click="toggleDrawer" class="menu__icon"/>
     <v-list-item-avatar width="120px" height="90px">
       <v-img
         src="https://ari-s3bucket.s3.amazonaws.com/assets/logo/arisale_logotipo.png"
@@ -9,10 +9,14 @@
 
     <template v-slot:extension>
       <v-tabs align-with-title>
-        <v-tab>Exceptions</v-tab>
-        <v-tab>Pinpad Events</v-tab>
-        <v-tab>Web services</v-tab>
+        <v-tab v-for="(tab, index) in tabs" :key="index" class="tab__title tab_container-border">
+          {{ tab.name }}
+        </v-tab>
       </v-tabs>
+        <v-btn text class="btn__container">
+          <span>Actualizar</span>
+          <v-icon>mdi-history</v-icon>
+        </v-btn>
     </template>
   </v-app-bar>
 </template>
@@ -20,10 +24,44 @@
 <script>
 export default {
   props: ['drawer'],
+  data() {
+    return {
+      tabs: [
+        {
+          name: 'Exceptions',
+        },
+        {
+          name: 'Pinpad Events',
+        },
+        {
+          name: 'Web Services',
+        },
+      ]
+    }
+  },
   methods: {
     toggleDrawer() {
-      this.$emit('update:drawer', !this.drawer)
+      this.$emit('toggleDrawer')
     },
   },
 }
 </script>
+
+
+<style scoped>
+.menu__icon {
+  color: #ABB2B9 !important;
+}
+.tab_container-border{
+  border: 1px solid #ABB2B9;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.tab__title  {
+  color: #ABB2B9 !important;
+}
+.btn__container{
+  color: #ABB2B9;
+  border: 1px solid #ABB2B9;
+}
+</style>

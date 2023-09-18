@@ -50,12 +50,30 @@ export default {
         { text: 'EndDate', value: 'endDate' },
         { text: 'Actions', value: '' },
       ],
-      items: [
-        { column1: "Valor 1", column2: "Valor 2", column3: "Valor 3" },
-        // Agrega más filas según tus necesidades
-      ],
+      loading: false,
     };
   },
+  computed: {
+    ...mapGetters(['isSearchDataComplete']),
+    ...mapState(['items', 'state', 'perPage', 'docsCount']),
+
+    perPage: {
+      get() {
+        return this.$store.state.perPage
+      },
+      set(val) {
+        this.$store.commit('setPerPage', val)
+      },
+    },
+    selectedTable: {
+      set(val) {
+        this.$store.commit('setSelectedTab', val)
+      },
+      get() {
+        return this.$store.state.selectedTab
+      },
+    }
+  }
 };
 </script>
   

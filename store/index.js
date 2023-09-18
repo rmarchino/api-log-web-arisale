@@ -3,7 +3,7 @@ export const state = () => ({
     searchData: {
       idCompany: '98b43c9172d84980abd7e46a672d5e32',
       idDevice: 'S202D89F70120',
-      endpoint: '',
+      endpoint: 'https://sale.arisale.com.pe/cpe-service/api/cpe/list',
       dateRange: [''],
     },
     items: [],
