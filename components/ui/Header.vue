@@ -50,18 +50,18 @@ export default {
 
 <style scoped>
 .menu__icon {
-  color: #ABB2B9 !important;
+  color: #545d61 !important;
 }
 .tab_container-border{
-  border: 1px solid #ABB2B9;
+  border: 1px solid #545d61;
   margin-bottom: 10px;
   border-radius: 5px;
 }
 .tab__title  {
-  color: #ABB2B9 !important;
+  color: #545d61 !important;
 }
 .btn__container{
-  color: #ABB2B9;
-  border: 1px solid #ABB2B9;
+  color: #545d61;
+  border: 1px solid #545d61;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Header :drawer="drawer" @toggleDrawer="toggleDrawer"/>
+    <Header :drawer="drawer" @toggleDrawer="toggleDrawer" />
     <SidebarFilter :drawer="drawer" :dateRange.sync="dateRange" @toggleDrawer="toggleDrawer"/>
 
     <v-container fluid>
