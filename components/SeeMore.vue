@@ -1,5 +1,5 @@
 <template>
-    <v-row class="text-center">
+    <v-row class="text-center containe-modal-deatail">
       <v-col cols="auto">
         <v-dialog
           v-model="dialog"
@@ -11,19 +11,21 @@
               dark
               v-bind="attrs"
               v-on="on"
+              class="button-ver-mas"
             >Ver más</v-btn>
           </template>
           <v-card>
             <v-toolbar
               dark
               color="primary"
+              class="card-modal"
             >
               <v-btn
                 icon
                 dark
                 @click="dialog = false"
               >
-                <v-icon>mdi-close</v-icon>
+                <v-icon class="button-close-modal">mdi-close</v-icon>
               </v-btn>
               <v-toolbar-title class="text-center">Campos Adicionales</v-toolbar-title>
             </v-toolbar>
@@ -282,12 +284,27 @@
   
 <style scoped>
   /** SectioN Company**/
+  .card-modal {
+    background: #545d61 !important;
+  }
+  .v-list-item {
+    background: #fff;
+  }
+  .button-ver-mas {
+    background-color: #68c6e8 !important;
+    color: #ffffff !important;
+  }
+  .button-close-modal {
+    color: #68c6e8 !important;
+  }
+
+
   .card__company {
-    background: #ebebeb;
-    padding: 1rem;
+    border: 1px solid #c5d1db;
+    padding: 10px;
   }
   .card__title{
-    color: #1a6fe6;
+    color: #545d61;
     font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -305,8 +322,8 @@
   
   /** SectioN Device AND LOCAL**/
   .card__container {
-    background-color: #ebebeb;
-    padding: 1rem;
+    padding: 10px;
+    border: 1px solid #c5d1db;
   
   }
   .card__container-device-local {
@@ -317,23 +334,21 @@
   
   /** SectioN Request AND Response **/
   .card__container-body-header {
-    background: #ebebeb;
-    padding: 1rem;
+    border: 1px solid #c5d1db;
+    padding: 10px;
   }
   
   /**Aplication **/
   .card__application {
-    background: #ebebeb;
-    padding: 1rem;
+    border: 1px solid #c5d1db;
+    padding: 10px;
+    margin-bottom: 20px;
   }
   
   .texto {
     color: #34383c !important;
   }
   
-  .card-container {
-    background: #cacaca !important;
-  }
   .card-title {
     font-size: 15px;
     color: #ffffff;

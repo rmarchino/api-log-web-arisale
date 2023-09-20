@@ -1,8 +1,8 @@
 // State de vuex: variables, data
 export const state = () => ({
     searchData: {
-      idCompany: '',
-      idDevice: '',
+      idCompany: '98b43c9172d84980abd7e46a672d5e32',
+      idDevice: 'S202D89F70120',
       endpoint: '',
       dateRange: [''],
     },

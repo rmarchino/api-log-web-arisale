@@ -58,7 +58,12 @@
                 ></v-text-field>
               </template>
 
-              <v-date-picker v-model="dateRange" range no-title scrollable>
+              <v-date-picker 
+                v-model="dateRange" 
+                range 
+                no-title 
+                scrollable
+              >
                 <v-btn class="button__save" @click="saveDateRange"
                   >Save</v-btn
                 >
@@ -81,12 +86,13 @@
 import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
-  props: ['drawer', 'dateRange'],
+  props: ['drawer'],
   data() {
     return {
       loadin: false,
       startDateMenu: false,
       endDateMenu: false,
+      dateRange: [],
     }
   },
   computed: {
@@ -143,16 +149,12 @@ export default {
     },
     saveDateRange() {
       this.startDateMenu = false
-      this.$emit('update:dateRange', {
-        startDate: this.startDate,
-        endDate: this.endDate,
-      })
-      // this.$store.commit('setDateRange', { startDate: this.startDate, endDate: this.endDate });
+      this.$store.commit('setDateRange', { startDate: this.startDate, endDate: this.endDate });
     },
 
     async search() {
       try {
-        // await this.$store.dispatch('searchData')
+        await this.$store.dispatch('searchData')
         console.log('Buscando...')
       } catch (error) {
         console.error('Error al obtener datos:', error)
@@ -171,10 +173,11 @@ h2 {
 }
 
 /** Button cerrar modal **/
-.v-btn:not(.v-btn--round).v-size--default{
-  height: 30px;
-  min-width: 15px !important;
+.button__flex-end > .button__cerrar {
+  width: 30px !important;
+  min-width: 10px !important;
 }
+
 .theme--dark.v-btn.v-btn--has-bg  {
   background: none;
 }
@@ -206,17 +209,15 @@ h2 {
   flex-direction: row;
   justify-content: center;
 }
-.v-btn:not(.v-btn--round).v-size--default {
-  height: 40px;
-  width: 150px;
-}
 
 /** Buttons save and cancel*/
 .button__save {
   background: #68c6e8 !important;
+  width: auto !important;
 }
 .button__cancel {
   background: #f26a62 !important;
+  width: auto !important;
 }
 .theme--dark.v-picker__body {
   background: #fff;
