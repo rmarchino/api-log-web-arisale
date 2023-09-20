@@ -2,3 +2,37 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+ body{
+    background-color: #ebeff5;
+ }
+
+ .v-application--wrap {
+   background-color: #fff;
+ }
+
+ .v-main__wrap {
+   margin-top: 30px;
+ }
+
+/**Midia query */
+@media (min-width: 1264px){
+   .container {
+       max-width: 1595px !important;
+   }
+
+   
+}
+@media (max-width: 1270px) {
+   .v-overlay__scrim {
+      border-radius: inherit;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: inherit;
+      width: 100%;
+      will-change: opacity;
+  }
+}

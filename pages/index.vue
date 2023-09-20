@@ -3,7 +3,7 @@
     <Header :drawer="drawer" @toggleDrawer="toggleDrawer" />
     <SidebarFilter :drawer="drawer" :dateRange.sync="dateRange" @toggleDrawer="toggleDrawer"/>
 
-    <v-container fluid>
+    <!-- <v-container fluid>
       <v-data-table
         :headers="headers"
         :items="items"
@@ -56,7 +56,9 @@
             <div class="total__doc">Total de documentos: {{ docsCount }}</div>
           </v-col>
         </v-card>
-    </v-container>
+    </v-container> -->
+    <main>
+    </main>
   </v-app>
 </template>
 
@@ -64,7 +66,6 @@
 import Header from '~/components/ui/Header.vue';
 import SidebarFilter from '~/components/SidebarFilter.vue';
 import SeeMore from '~/components/SeeMore.vue';
-
 
 import { mapGetters, mapActions, mapState } from 'vuex'
 

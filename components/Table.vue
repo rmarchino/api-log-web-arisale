@@ -11,17 +11,17 @@
             hide-default-footer
           >
             <template>
-              <tr>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
-                <td>Ejemplo 1</td>
+              <tr class="custom-row">
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
+                <td class="custom-cell">Ejemplo 1</td>
               </tr>
             </template>
           </v-data-table>
@@ -76,4 +76,12 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+  .custom-row {
+    backface-visibility: red;
+    color: black;
+  }
+</style>
   

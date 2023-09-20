@@ -1,4 +1,6 @@
 <template>
+  <v-card class="mx-auto overflow-hidden">
+
   <v-app-bar app color="grey lighten-5">
     <v-app-bar-nav-icon @click="toggleDrawer" class="menu__icon"/>
     <v-list-item-avatar width="120px" height="90px">
@@ -19,6 +21,7 @@
         </v-btn>
     </template>
   </v-app-bar>
+  </v-card>
 </template>
 
 <script>

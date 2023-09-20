@@ -3,8 +3,7 @@
     app
     width="350"
     :value="drawer"
-    style="background: rgb(244, 244, 244); padding: 15px"
-    class="card--sidebar"
+    style="background: rgb(244, 244, 244); padding: 15px;"
   >
     <div class="button__flex-end">
       <v-btn @click="toggleDrawer" class="mb-5" color="button__cerrar">X</v-btn>
@@ -170,18 +169,20 @@ h2 {
   color: #545d61;
   font-size: 1.25rem;
 }
+
 /** Button cerrar modal **/
 .v-btn:not(.v-btn--round).v-size--default{
   height: 30px;
   min-width: 15px !important;
 }
 .theme--dark.v-btn.v-btn--has-bg  {
-  background: #f4f4f4
+  background: none;
 }
 .button__flex-end {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 .v-btn--is-elevated  {
   box-shadow: none !important;
@@ -282,20 +283,12 @@ h2 {
   background-color: #fff;
 }
 
-/**HTML */
-html {
-  background-color: #ebeff5;
+.theme--dark.v-card {
+  background-color: #fff;
 }
 
 /** tabs */
 .v-tabs-slider {
   background: white !important;
-}
-
-/**Midia query */
-@media (min-width: 1264px){
-.container {
-    max-width: 1595px !important;
-}
 }
 </style>
