@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <Header :drawer="drawer" @toggleDrawer="toggleDrawer" />
+  <v-app class="FFFF">
+    <Header :drawer="drawer" :overlay="overlay" @toggleDrawer="toggleDrawer" />
     <SidebarFilter :drawer="drawer" :dateRange.sync="dateRange" @toggleDrawer="toggleDrawer"/>
 
     <!-- <v-container fluid>
@@ -91,6 +91,7 @@ export default {
         { text: 'EndDate', value: 'endDate' },
         { text: 'Actions', value: '' },
       ],
+      overlay: false,
       drawer: false,
       loading: false,
       tableWidth: '100%',
@@ -124,6 +125,7 @@ export default {
 
     toggleDrawer() {
       this.drawer = !this.drawer
+      this.overlay = !this.overlay
     }
   },
   async changePerPage() {
