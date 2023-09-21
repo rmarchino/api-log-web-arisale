@@ -74,7 +74,15 @@
             </v-menu>
           </v-col>
           <v-col cols="12" class="container__button-search">
-            <v-btn class="button__search" @click="search">Buscar</v-btn>
+            <v-btn class="button__search" @click="search" :disabled="!isSearchDataComplete">Buscar</v-btn>
+            <v-overlay :value="loading">
+              <v-progress-circular
+                size="70"
+                width="7"
+                color="primary"
+                indeterminate
+              ></v-progress-circular>
+            </v-overlay>
           </v-col>
         </v-row>
       </v-form>
@@ -83,19 +91,22 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
-  props: ['drawer'],
+  props: ['drawer',],
+
   data() {
     return {
-      loadin: false,
+      loading: false,
+      overlay: false,
       startDateMenu: false,
       endDateMenu: false,
       dateRange: [],
     }
   },
   computed: {
+    ...mapGetters(['isSearchDataComplete']),
     ...mapState(['state']),
 
     idCompany: {
@@ -154,12 +165,15 @@ export default {
 
     async search() {
       try {
+        this.loading = true;
         await this.$store.dispatch('searchData')
-        console.log('Buscando...')
+
       } catch (error) {
         console.error('Error al obtener datos:', error)
       } finally {
-        this.loading = false
+        setTimeout(() => {
+          this.loading = false
+        }, 2000);
       }
     },
   },

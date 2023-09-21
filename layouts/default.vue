@@ -1,7 +1,5 @@
 <template>
-  <v-main class="container">
-    <nuxt />
-  </v-main>
+  <nuxt />
 </template>
 
 <script>

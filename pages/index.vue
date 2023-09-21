@@ -1,10 +1,23 @@
 <template>
   <v-app class="FFFF">
-    <Header :drawer="drawer" :overlay="overlay" @toggleDrawer="toggleDrawer" />
-    <SidebarFilter :drawer="drawer" :dateRange.sync="dateRange" @toggleDrawer="toggleDrawer"/>
+    <Header 
+      :drawer="drawer" 
+      :overlay="overlay"
+      @toggleDrawer="toggleDrawer"
+    />
 
-    <main>
-          <v-row class="container-tabla">
+    <SidebarFilter 
+      :drawer="drawer" 
+      :dateRange.sync="dateRange" 
+      @toggleDrawer="toggleDrawer"
+    />
+
+    <v-main>
+      <v-container fluid>
+
+      <v-row class="container-tabla">
+        <v-tabs-items v-model="selectedTab">
+          <v-tab-item v-for="(tab, index) in tabs" :key="index">
             <v-col cols="12">
               <v-data-table
                 :headers="headers"
@@ -36,11 +49,9 @@
                 </template>
               </v-data-table>
             </v-col>
-          </v-row>
-      <!-- <v-tabs-items v-model="selectedTab">
-        <v-tab-item v-for="(tab, index) in tabs" :key="index">
-        </v-tab-item>
-      </v-tabs-items> -->
+          </v-tab-item>
+        </v-tabs-items>
+      </v-row>
       <v-row class="mt-5">
         <v-col class="d-flex" cols="12" sm="6">
           <v-btn
@@ -61,7 +72,9 @@
           <div class="total__doc">Total de documentos: {{ docsCount }}</div>
         </v-col>
       </v-row>
-    </main>
+      </v-container>
+    </v-main>
+    <div v-if="loading" class="overlay"></div>
   </v-app>
 </template>
 
@@ -71,7 +84,6 @@ import SidebarFilter from '~/components/SidebarFilter.vue';
 import SeeMore from '~/components/SeeMore.vue';
 
 import { format } from 'date-fns';
-
 import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
@@ -96,15 +108,38 @@ export default {
         { text: 'EndDate', value: 'endDate' },
         { text: 'Actions', value: '' },
       ],
+      tabs: [
+        {
+          name: 'Exceptions',
+        },
+        {
+          name: 'Pinpad Events',
+        },
+        {
+          name: 'Web Services',
+        },
+      ],
+
       overlay: false,
-      drawer: false,
       loading: false,
+      drawer: false,
       sortable: false,
       align: 'start',
       tableWidth: '100%',
       elementPagination: [7, 10, 15, 25, 50, 100],
       dateRange: [null, null],
     }
+  },
+
+  created() {
+    this.$root.$on('start-loading', () => {
+      this.loading = true;
+      this.overlay = true;
+    });
+    this.$root.$on('stop-loading', () => {
+      this.loading = false;
+      this.overlay = false;
+    });
   },
 
   filters: {
@@ -129,6 +164,7 @@ export default {
   computed: {
     ...mapGetters(['isSearchDataComplete']),
     ...mapState(['items', 'state', 'perPage', 'docsCount']),
+
 
     perPage: {
       get() {

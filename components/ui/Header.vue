@@ -8,16 +8,17 @@
         ></v-img>
       </v-list-item-avatar>
 
-      <template v-slot:extension>
-        <v-tabs align-with-title>
+      <template v-slot:extension v-if="isSearchDataComplete">
+        <v-tabs align-with-title v-model="selectedTab">
           <v-tab v-for="(tab, index) in tabs" :key="index" class="tab__title tab_container-border">
-            {{ tab.name }}
+            <h4>{{ tab.name }}</h4>
           </v-tab>
         </v-tabs>
-          <v-btn text class="btn__container">
-            <span>Actualizar</span>
-            <v-icon>mdi-history</v-icon>
-          </v-btn>
+
+        <v-btn text class="btn__container">
+          <span>Actualizar</span>
+          <v-icon>mdi-history</v-icon>
+        </v-btn>
       </template>
     </v-app-bar>
     <v-overlay v-model="overlay"></v-overlay>
@@ -25,6 +26,9 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex';
+
+
 export default {
   props: ['drawer', 'overlay'],
   data() {
@@ -39,7 +43,21 @@ export default {
         {
           name: 'Web Services',
         },
-      ]
+      ],
+      dateRange: [],
+    }
+  },
+  computed: {
+    ...mapGetters(['isSearchDataComplete']),
+    ...mapState(['state']),
+
+    selectedTab: {
+      set(val) {
+        this.$store.commit('setSelectedTab', val);
+      },
+      get() {
+        return this.$store.state.selectedTab;
+      }
     }
   },
   methods: {
